@@ -1,20 +1,28 @@
-import itertools
+BOARD_SIZE = 8
 
-def iter_primes():
-     # an iterator of all numbers between 2 and +infinity
-     numbers = itertools.count(2)
+class BailOut(Exception):
+    pass
 
-     # generate primes forever
-     while True:
-         # get the first number from the iterator (always a prime)
-         prime = next(numbers)
-         yield prime
+def validate(queens):
+    left = right = col = queens[-1]
+    for r in reversed(queens[:-1]):
+        left, right = left-1, right+1
+        if r in (left, col, right):
+            raise BailOut
 
-         # this code iteratively builds up a chain of
-         # filters...slightly tricky, but ponder it a bit
-         numbers = filter(prime.__rmod__, numbers)
+def add_queen(queens):
+    for i in range(BOARD_SIZE):
+        test_queens = queens + [i]
+        try:
+            validate(test_queens)
+            if len(test_queens) == BOARD_SIZE:
+                return test_queens
+            else:
+                return add_queen(test_queens)
+        except BailOut:
+            pass
+    raise BailOut
 
-for p in iter_primes():
-    if p > 1000:
-        break
-    print (p)
+queens = add_queen([])
+print (queens)
+print ("\n".join(". "*q + "Q " + ". "*(BOARD_SIZE-q-1) for q in queens))
