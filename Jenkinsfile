@@ -3,7 +3,7 @@ pipeline{
         stages{
         stage("Build"){
               when {
-                  changerequest()
+                  changelog(.*some_text.*)
               }
             steps{
                 echo "Hello world change request"
