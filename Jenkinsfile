@@ -1,9 +1,9 @@
-pipeline{
+pipeline {
     agent any
-        stages{
-        stage("Build"){
+        stages {
+        stage("Build") {
               when {
-                  changelog(.*some_text.*)
+                  changelog '.*some_text.*'
               }
             steps{
                 echo "Hello world change request"
@@ -12,4 +12,3 @@ pipeline{
         }
     }
 }
-  
