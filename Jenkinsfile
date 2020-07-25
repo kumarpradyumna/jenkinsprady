@@ -1,6 +1,7 @@
 pipeline{
  agent any
     stages{
+<<<<<<< HEAD
         stage("stages running in paralle"){
              paralle {
                  stage ("stage1") {
@@ -25,6 +26,21 @@ pipeline{
                   
 
              }
+=======
+        stage("Build"){
+<<<<<<< HEAD
+            when {
+                tag "release-*"
+            }
+=======
+              when {
+                  changelog(.*some_text.*)
+              }
+>>>>>>> b4a2d88... new line added
+            steps{
+                echo "Hello World Building tag"
+            }
+>>>>>>> 277dbcf... file added
            
             }
         }
