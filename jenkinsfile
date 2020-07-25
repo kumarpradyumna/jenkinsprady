@@ -1,25 +1,21 @@
-pipeline {
+pipeline{
     agent any
-	
-	stages {
-        stage ('SCM') {
-            steps {
-                 git 'https://github.com/kumarpradyumna/java-tomcat-maven-example.git'
+    stages {
+        stage('Build') {
+            when {
+                Branch 'master'
             }
-		}
-    
-	    stage ('Build') {
             steps {
-                 sh label: '', script: 'mvn package'
+                echo "Building master"
             }
-		}
-		
-		stage ('archival') {
-		  steps {
-		     archive 'target/*.war'
-			 }
-		  
-		}
+            stage('Build sit') {
+                when {
+                    Branch 'sit'
+                }
+                steps{
+                    echo "Buildig SIT"
+                }
+            }
+        }
     }
 }
-
