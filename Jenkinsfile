@@ -1,21 +1,24 @@
-pipeline{
-    agent any
+pipeline {
+    agent any 
     stages {
-        stage('Build') {
+        stage ('Build master') {
             when {
                 branch 'master'
             }
             steps {
                 echo "Building master"
             }
-            stage('Build sit') {
-                when {
-                    branch 'sit'
-                }
-                steps{
-                    echo "Buildig SIT"
-                }
+
+        }
+        stage ("Build sit") {
+            when {
+                branch 'sit'
+            }
+            steps {
+                echo "Building sit"
             }
         }
+          
+          }
     }
 }
