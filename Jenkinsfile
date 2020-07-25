@@ -1,16 +1,14 @@
 pipeline{
     agent any
-
-    stages{
+        stages{
         stage("Build"){
-            when {
-                tag "release-*"
-            }
+              when {
+                  changerequest()
+              }
             steps{
-                echo "Hello World Building tag"
+                echo "Hello world change request"
             }
            
-                }
-            }
         }
-    
+    }
+  
