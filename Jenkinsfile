@@ -6,6 +6,8 @@ pipeline {
     options {
         timestamps()
         overrideIndexTriggers(true)
+        buildDiscarder(logRotator (numToKeepstr: '5'))
+       disableConcurrentBuilds()
     }
     stages {
         stage ('Build') {
