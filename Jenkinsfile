@@ -8,9 +8,13 @@ properties{
 triggers{
     pollSCM ('*/1 * * * *')
 }
-stage('Build'){
+stages {
+
+    stage('Build'){
     echo 'Helloworld 1'
 }
+}
+
 
     }
    
