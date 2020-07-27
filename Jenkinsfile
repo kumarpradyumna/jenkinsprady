@@ -1,22 +1,17 @@
-pipeline{
-agent any
-properties{
-    [
-        overrideindexTriggers(true)
-    ]
-}
-triggers{
-    pollSCM ('*/1 * * * *')
-}
-stages {
-
-    stage('Build'){
-      steps{
-           echo 'Helloworld 1'
-      }
-}
-}
-
-
+pipeline {
+    agent any 
+    triggers {
+        pollSCM ('*/1 * * * *')
     }
-   
+    options {
+        timestamp()
+        overrideIndexTriggers(true)
+    }
+    stages {
+        stage ('Build') {
+         steps {
+             echo 'Hello World 1 '
+         }
+        }
+    }
+} 
