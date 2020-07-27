@@ -11,7 +11,9 @@ triggers{
 stages {
 
     stage('Build'){
-    echo 'Helloworld 1'
+      steps{
+           echo 'Helloworld 1'
+      }
 }
 }
 
