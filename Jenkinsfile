@@ -4,7 +4,7 @@ pipeline {
         pollSCM ('*/1 * * * *')
     }
     options {
-        timestamp()
+        timestamps()
         overrideIndexTriggers(true)
     }
     stages {
