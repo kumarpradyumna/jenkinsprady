@@ -1,15 +1,16 @@
 pipeline {
     agent any 
-    triggers {
-        pollSCM ('*/1 * * * *')
-    }
+
     options {
         timestamps()
-        overrideIndexTriggers(true)
+        overrideIndexTriggers(false)
     }
     stages {
         stage ('build') {
-            echo "Hello world 1"
+            steps{
+                echo "Hello world 1"
+            }
+            
         }
     }
-}}
+}
