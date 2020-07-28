@@ -1,21 +1,16 @@
 pipeline {
     agent any 
-    triggers {
-        pollSCM ('*/1 * * * *')
-    }
+
     options {
         timestamps()
-        overrideIndexTriggers(true)
+        overrideIndexTriggers(false)
     }
     stages {
-        stage ('checkout') {
-            parallel {
-             stage ('Build') {
-                steps {
-                    echo 'Hello World 1 '
+        stage ('build') {
+            steps{
+                echo "Hello world 1"
             }
-        }
-                 
+            
         }
     }
 }
