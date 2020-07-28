@@ -8,14 +8,8 @@ pipeline {
         overrideIndexTriggers(true)
     }
     stages {
-        stage ('checkout') {
-            parallel {
-             stage ('Build') {
-                steps {
-                    echo 'Hello World 1 '
-            }
-        }
-                 
+        stage ('build') {
+            echo "Hello world 1"
         }
     }
-}
+}}
