@@ -5,18 +5,17 @@ pipeline {
     }
     options {
         timestamps()
-        overrideIndexTriggers(false)
+        overrideIndexTriggers(true)
     }
     stages {
         stage ('checkout') {
             parallel {
-                stage ('code')
+             stage ('Build') {
+                steps {
+                    echo 'Hello World 1 '
             }
         }
-        stage ('Build') {
-         steps {
-             echo 'Hello World 1 '
-         }
+                 
         }
     }
 }
